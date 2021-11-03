@@ -16,29 +16,41 @@
 <body class="login-page">
 
 <!--start login-->
-<div class="login-wrap">
+<div class="login-wrap" style="min-height: 950px;">
 	<div class="login-html">
         <a class="navbar-brand logo logo-login" href="#"><span>M</span>IHNA</a>
         <hr class="hr">
-		<div class="container-signbtn">
+        <div class="container-signbtn">
          <a href="#" class="sign-btns">تسجيل الدخول</a>
          <a href="#" class="sign-btns">حساب جديد</a>
         </div>
 		<div class="login-form">
-			<div class="sign-in-htm">
+			<form class="sign-up-htm">
 				<div class="group">
-					<label for="user" class="label">ألبريد الالكتروني</label>    
-					<input id="user" type="email" class="input">
+					<label for="user" class="label">الاسم الاول</label>
+					<input id="user" type="text" class="input">
+				</div>
+                <div class="group">
+					<label for="user" class="label">الاسم الثاني</label>
+					<input id="user" type="text" class="input">
+				</div>
+                <div class="group">
+					<label for="pass" class="label">ألبريد الالكنروني</label>
+					<input id="pass" type="email" class="input">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">كلمة السر</label>
+					<label for="pass" class="label">كلمة السر </label>
 					<input id="pass" type="password" class="input" data-type="password">
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="تسجيل الدخول">
+					<label for="pass" class="label">تأكيد كلمة السر</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="حساب جديد">
 				</div>
 				<div class="hr"></div>
-			</div>
+             </form>
 		</div>
 	</div>
 </div>
