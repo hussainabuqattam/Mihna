@@ -59,7 +59,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  text-align: left;
+  text-align: right;
+  direction: rtl;
   background-color: #fff;
 }
 
@@ -363,6 +364,7 @@ h1, h2, h3, h4, h5, h6,
 
 h1, .h1 {
   font-size: 2.5rem;
+  color: #9daaf2;
 }
 
 h2, .h2 {
@@ -3381,7 +3383,7 @@ input[type="button"].btn-block {
   color: #212529;
   text-align: inherit;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: #c7d8;
   border: 0;
 }
 
@@ -10070,7 +10072,7 @@ button.bg-dark:focus {
 }
 
 .text-white {
-  color: #fff !important;
+  color: #fff!important;
 }
 
 .text-primary {
