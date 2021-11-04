@@ -1,19 +1,58 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= @$titlePage ?></title>
-    <link rel="stylesheet" href="layout/css/bootstrap.css">
-    <link rel="stylesheet" href="layout/css/fontawesome.css">
-    <link rel="stylesheet" href="layout/css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Harmattan&display=swap" rel="stylesheet">
-</head>
-</head>
-<body class="login-page">
+<?php
+    $titlePage = "Signup";
+    include "include/init.php";
+    include "include/header.php";
+
+	if(isset($_POST['signup'])) {
+		$error = [];
+		$first_name  = $_POST['Fname'];
+		$last_name = $_POST['Lname'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$confirmPassword = $_POST['confirm_password'];
+		$image = "user.png";
+
+		
+		if(empty($first_name)) {
+			$error['FirstName'] = "First Name can't be empty";
+		}else if(strlen($first_name) < 3) {
+			$error['FirstName'] = "First Name must contain at least 3 characters";
+		}
+	
+		if(empty($last_name)) {
+			$error['LastName'] = "Last Name can't be empty";
+		}else if(strlen($last_name) < 3) {
+			$error['LastName'] = "Last Name must contain at least 3 characters";
+		}
+	
+		if(empty($email)) {
+			$error['Email'] = "Email can't be empty";
+		}else if(!preg_match("/^([\w0-9_\-\.]+)@([\w\-]+\.)+[\w]{2,6}$/", $email)) {
+			$error['Email'] = "Email is not Correct , Must Be Like this Pattern (example@example.com)";
+		}
+	
+		if(empty($password)){
+			$error['Password'] = "Password can't be empty";
+		}else if($confirmPassword !== $password){
+			$error['Password'] = "Password and confirm password are not Match";
+		}
+
+
+
+		if(empty($error)){
+			$stmt = $connect->prepare("INSERT INTO users SET password = ?, email = ?, first_name = ?, last_name = ?, image = ?");
+			$result = $stmt ->execute([$password, $email, $first_name, $last_name, $image]);
+	
+			if($result == true) {
+				$_SESSION['message_success'] = "User Add successfully";
+				Redirect("login.php");
+			}
+	
+		}
+	}
+
+?>
+
 
 <!--start login-->
 <div class="login-wrap" style="min-height: 950px;">
@@ -21,33 +60,33 @@
         <a class="navbar-brand logo logo-login" href="#"><span>M</span>IHNA</a>
         <hr class="hr">
         <div class="container-signbtn">
-         <a href="#" class="sign-btns">تسجيل الدخول</a>
-         <a href="#" class="sign-btns">حساب جديد</a>
+         <a href="Login.php" class="sign-btns">تسجيل الدخول</a>
+         <a href="sign-up.php" class="sign-btns">حساب جديد</a>
         </div>
 		<div class="login-form">
-			<form class="sign-up-htm">
+			<form class="sign-up-htm" method="POST">
 				<div class="group">
 					<label for="user" class="label">الاسم الاول</label>
-					<input id="user" type="text" class="input">
+					<input id="user" type="text" class="input" name="Fname">
 				</div>
                 <div class="group">
 					<label for="user" class="label">الاسم الثاني</label>
-					<input id="user" type="text" class="input">
+					<input id="user" type="text" class="input" name="Lname">
 				</div>
                 <div class="group">
 					<label for="pass" class="label">ألبريد الالكنروني</label>
-					<input id="pass" type="email" class="input">
+					<input id="pass" type="email" class="input" name="email">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">كلمة السر </label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" data-type="password" name="password">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">تأكيد كلمة السر</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input id="pass" type="password" class="input" data-type="password" name="confirm_password">
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="حساب جديد">
+					<input type="submit" class="button" value="حساب جديد" name="signup">
 				</div>
 				<div class="hr"></div>
              </form>
