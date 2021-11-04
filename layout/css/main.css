@@ -109,7 +109,7 @@ a{color:inherit;text-decoration:none}
 	padding:90px 70px 50px 70px;
 	background-color: var(--main--color);
 }
-.logo-login{display: block;width: 100%;margin-bottom: 60px;margin-right: 36%;}
+.logo-login{display: block;width: 100%;margin-bottom: 60px;text-align: center;}
 
 .container-signbtn{margin-bottom: 20px;width: 100%;text-align: center;}
 
