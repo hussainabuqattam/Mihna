@@ -15,13 +15,18 @@ body{direction: rtl;text-align: right;}
     right: 0;
     left: 0;
     transition: 1.5s;
+    background: var(--main--color);
+}
+
+.navbar-edit.Home {
+    background: initial;
 }
 .ciear{visibility: hidden;}
 .logo{color:var(--selver--color) !important;font-size: 35px;font-family: 'Dancing Script', cursive;}
 
 .logo span{color:var(--second--color);font-size: 40px;}
 
-.sticky{background-color: var(--main--color); transition: 1.5s;}
+.sticky{background-color: var(--main--color) !important; transition: 1.5s;}
 
 .navbar-edit ul li a{ margin-right: 25px;font-size: 19px!important;color: var(--second--color)!important;}
 
