@@ -12,4 +12,4 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Harmattan&display=swap" rel="stylesheet">
 </head>
-<body class="<?= $titlePage == "Login" ? "login-page": "" ?>">
+<body class="<?= $titlePage == "Login" || $titlePage == "Signup" ? "login-page": "" ?>">
