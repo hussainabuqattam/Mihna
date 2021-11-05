@@ -31,7 +31,7 @@
 <!--start login-->
 <div class="login-wrap">
 	<div class="login-html">
-        <a class="navbar-brand logo logo-login" href="#"><span>M</span>IHNA</a>
+        <a class="navbar-brand logo logo-login" href="index.php"><span>M</span>IHNA</a>
         <hr class="hr">
 		<div class="container-signbtn">
          <a href="Login.php" class="sign-btns">تسجيل الدخول</a>
