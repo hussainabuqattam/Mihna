@@ -1,118 +1,138 @@
 <?php 
-      include "include/header.php";
-      include "include/nav.php";
+
+    $titlePage = "Add Craft";
+    include "include/init.php";
+    include "include/header.php";
+
+    include "include/nav.php";
+
+    if(!isset($_SESSION['ID'])) {
+        Redirect("index.php");
+    }
+
+    $stmt = $connect->prepare("SELECT * FROM crafts WHERE user_id = ?");
+    $stmt->execute([$_SESSION['ID']]);
+    $craft = $stmt->rowCount();
+
+    if($craft > 0) {
+        Redirect("index.php");
+    }
+
+    $stmt1 = $connect->prepare("SELECT * FROM categories");
+    $stmt1->execute([]);
+    $categories = $stmt1->fetchAll();
+
+    if(isset($_POST['Save'])) {
+        $name = $_POST['name'];
+        $experience = $_POST['experience'];
+        $start_work = $_POST['start_work'];
+        $end_work = $_POST['end_work'];
+        $address = $_POST['address'];
+        $previous_jobs = $_POST['previous_jobs'];
+        $notes = $_POST['notes'];
+        $phone_number = $_POST['phone_number'];
+        $email = $_POST['email'];
+        $image = $_FILES['image']['name'];
+        $IDcategory = $_POST['category']; 
+
+        $validation = validationCraft($_POST, $_FILES);
+
+        if($validation === true) {
+            move_uploaded_file($_FILES['image']['tmp_name'], "img/$image");
+            $stmt = $connect->prepare("INSERT INTO crafts SET name = ?, experience = ?, start_work = ?, 
+                                            end_work = ?, address = ?, previous_jobs = ?, notes = ?, 
+                                            phone_number = ?, email = ?, category_id = ?, user_id = ?, 
+                                            image = ?");
+
+            $result = $stmt->execute([$name, $experience, $start_work, $end_work, $address, $previous_jobs, $notes, $phone_number, $email, $IDcategory, $_SESSION['ID'], $image]);
+
+            if($result == true) {
+                Redirect("index.php");
+            }
+
+        }
+    }
+
+    include "include/array.php"
+
 ?>
     <div class="testbox">
-        <form action="/">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="banner">
               <h1>أضافة حرفة</h1>
             </div>
             <div class="item">
                 <label for="name">اسم الحرفة المقدمة :</label>
-                <input id="name" type="text" name="name" required placeholder="احمد للسباكة"/>
+                <input id="name" type="text" name="name" required />
             </div>
             <div class="item">
                 <label>نوع الحرفة المقدمة :</label>
-                <select class="custom-select" id="validationTooltip04"style="width:99%" required>
-                <option selected value="" disabled selected>نوع الحرفة</option>
-                <option>حرفة النجارة</option>
-                <option>حرفة السباك </option>
-                <option>عامل منزل</option>
-                <option>حرفة حداد</option>
-                <option>مبرمج</option>
-                <option>حرف منزلية</option>
+                <select class="custom-select" id="validationTooltip04"  style="width:99%" required name="category">
+                    <option selected value="" disabled selected>نوع الحرفة</option>
+                    <?php if(!empty($categories)): foreach($categories as $category): ?>
+                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                    <?php endforeach; endif; ?>
                 </select>
             </div>
             <div class="item">
                 <label for="email">الخبرة :</label>
-                <input id="email" type="text" name="text" required placeholder="25 سنة"/>
+                <input id="email" type="text" name="experience" required/>
             </div>
             <div class="item">
                 <label for="attendees">ساعات الدوام:</label>
                 <div class="flax">
                 <div class="item">
                     <p>بدء الدوام</p>
-                    <select>
-                    <option selected value="" disabled selected></option>
-                    <option value="8A" >8 AM</option>
-                    <option value="9A">9 AM</option>
-                    <option value="10A">10 AM</option>
-                    <option value="11A">11 Am</option>
-                    <option value="12P">12 Pm</option>
-                    <option value="1P">1 Pm</option>
-                    <option value="2P">2 Pm</option>
-                    <option value="3P">3 Pm</option>
-                    <option value="4P">4 Pm</option>
-                    <option value="5P">5 Pm</option>
-                    <option value="6P">6 Pm</option>
-                    <option value="7P">7 Pm</option>
-                    <option value="8P">8 Pm</option>
+                    <select name="start_work">
+                        <option selected value="" disabled selected></option>
+                        <?php foreach($times as $time): ?>
+                            <option value="<?= $time ?>"><?= $time ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="item">
                     <p>انتهاء الدوام</p>
-                    <select>
-                    <option selected value="" disabled selected></option>
-                    <option value="8A" >8 AM</option>
-                    <option value="9A">9 AM</option>
-                    <option value="10A">10 AM</option>
-                    <option value="11A">11 Am</option>
-                    <option value="12P">12 Pm</option>
-                    <option value="1P">1 Pm</option>
-                    <option value="2P">2 Pm</option>
-                    <option value="3P">3 Pm</option>
-                    <option value="4P">4 Pm</option>
-                    <option value="5P">5 Pm</option>
-                    <option value="6P">6 Pm</option>
-                    <option value="7P">7 Pm</option>
-                    <option value="8P">8 Pm</option>
+                    <select name="end_work">
+                        <option selected value="" disabled selected></option>
+                        <?php foreach($times as $time): ?>
+                            <option value="<?= $time ?>"><?= $time ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
             </div>
             </div>
             <div class="item">
                 <label for="position">الموقع/العنوان :</label>
-                <input id="position" type="text" name="position" required placeholder="عمان/شارع الملكة رانيا"/>
+                <input id="position" type="text" name="address" required />
             </div>
             <div class="item">
                 <label for="department">اعمال سابقة :</label>
-                <input id="department" type="text" name="department" required placeholder="www.ahmad.com"/>
+                <input id="department" type="text" name="previous_jobs" />
             </div>
             <div class="item">
                 <label for="department">الملاحظات :</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="notes" rows="3"></textarea>
             </div>
             <div class="item">
                 <label for="phone">رقم الهاتف :</label>
-                <input id="phone" type="number" placeholder="(XXX) XXX-XXXX"  name="phone" required/>
+                <input id="phone" type="text" name="phone_number" required class="inputdirection" />
+            </div>
+            <div class="item">
+                <label for="email">البريد الالكنروني :</label>
+                <input id="email" type="email" name="email" required  class="inputdirection"/>
             </div>
             <label for="exampleFormControlFile1">صورة الحرفة :</label>
                 <div>
                     <div class="upload-add" id="upload-add-serves">
-                        <img src="https://placehold.co/300x300" alt="img-upload" name="img" class="rounded imguploadserves" id="imguploadserves">
+                        <img src="https://placehold.co/300x300" alt="img-upload" class="rounded imguploadserves" id="imguploadserves">
                     </div>
-                    <input name="upload" type="file" onchange="readUrl(this)"class="inpfile" id="inpfile" style="display:none;">
+                    <input name="image" type="file" onchange="readUrl(this)" class="inpfile" id="inpfile" style="display:none;">
                     <label for="inpfile"class="input-files"><i class="fas fa-upload"></i>&nbsp;اضافة صورة</label>
                 </div>
                 <hr>
             <div class="btn-block">
-              <button type="submit" href="/">اضافة الحرفة</button>
+              <button type="submit" name="Save">اضافة الحرفة</button>
             </div>
         </form>
     </div>
 <?php include "include/footer.php";?>
-
-<script>
-       function readUrl(input){
-    var uploadimg = document.getElementById("imguploadserves");
-
-       if(input.files){
-           var reader = new FileReader();
-           reader.readAsDataURL(input.files[0]);
-           reader.onload=(download)=>{
-            uploadimg.src = download.target.result;
-
-           }
-       }
-   }
-</script>

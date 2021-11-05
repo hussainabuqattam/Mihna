@@ -17,13 +17,23 @@ body{direction: rtl;text-align: right;}
     background: var(--main--color);
 }
 
+.inputdirection {
+    direction: ltr;
+    text-align: right;
+}
+
+.error-validation{
+  color:#ff0000a3;
+  font-size:12px;
+}
+
 .navbar-edit.Home {
     background: initial;
     position: fixed !important;
 }
-/* logout nav
-navbar-edit ul li a{margin-right:80px;}
-*/
+
+.navbar-edit.Login ul li a{margin-right:80px;}
+
 .ciear{visibility: hidden;}
 .logo{color:var(--selver--color) !important;font-size: 35px;font-family: 'Dancing Script', cursive;}
 
@@ -301,7 +311,7 @@ a{color:inherit;text-decoration:none}
 .testbox .banner {
   position: relative;
   height: 300px;
-  background-image: url("../img/pexels-flora-westbrook-4191618.jpg");  
+  background-image: url("../../img/pexels-flora-westbrook-4191618.jpg");  
   background-size: cover;
   display: flex;
   margin-bottom: 20px!important;

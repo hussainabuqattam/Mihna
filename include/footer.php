@@ -14,7 +14,7 @@
             $(window).scroll(function(){
     
                 $('nav').toggleClass("sticky", $(this).scrollTop() > 0);   
-                });
+            });
       </script>
 </body>
 </html>
