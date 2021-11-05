@@ -68,6 +68,7 @@
 				<div class="group">
 					<label for="user" class="label">الاسم الاول</label>
 					<input id="user" type="text" class="input" name="Fname">
+					<span style="color:#ff0000a3;">erorr</span>
 				</div>
                 <div class="group">
 					<label for="user" class="label">الاسم الثاني</label>
