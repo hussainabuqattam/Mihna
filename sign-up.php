@@ -31,7 +31,7 @@
 
 
 <!--start login-->
-<div class="login-wrap" style="min-height: 950px;">
+<div class="login-wrap" style="min-height: 1000px;">
 	<div class="login-html">
         <a class="navbar-brand logo logo-login" href="index.php"><span>M</span>IHNA</a>
         <hr class="hr">
@@ -61,6 +61,13 @@
 					<?php if(isset($validation['Email'])): ?>
 						<span class="error-validation"><?= $validation['Email'] ?></span>
 					<?php endif; ?>
+				</div>
+				<div class="group">
+					<label class="label" for="inputState">حالة المستخدم</label>
+					<select id="inputState" class="input"style="color:#aaa;" name="gender">
+						<option selected>مقدم حرفة </option>
+						<option>مستخدم عادي</option>
+					</select>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">كلمة السر </label>

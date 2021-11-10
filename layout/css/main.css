@@ -4,7 +4,7 @@
     --White--color: #f2f2f2;
     --selver--color:#F6F4F2;
 }
-body{direction: rtl;text-align: right;}
+body{direction: rtl;text-align: right;overflow-x: hidden;}
 
 /*start navbar*/
 .navbar-edit{
@@ -32,7 +32,7 @@ body{direction: rtl;text-align: right;}
     position: fixed !important;
 }
 
-.navbar-edit.Login ul li a{margin-right:80px;}
+.navbar-edit.Login ul li a{margin-right:125px;}
 
 .ciear{visibility: hidden;}
 .logo{color:var(--selver--color) !important;font-size: 35px;font-family: 'Dancing Script', cursive;}
@@ -48,6 +48,9 @@ body{direction: rtl;text-align: right;}
 .navbar-edit ul li button{font-size: 18px;margin-right: 20px;margin-top: 5px;}
 
 .navbar-edit ul li button i{margin-left: 10px;font-size: 16px;}
+
+.sign-btns i{color: var(--second--color)!important;}
+
 /*end navbar*/
 /*start main-page*/
 /*start background*/
@@ -81,15 +84,27 @@ body{direction: rtl;text-align: right;}
 /*start mihna user*/
 .mihna-user{margin-top: 70px;}
 
-.box-mihna-user{height: 455px;margin-bottom:40px;}
+.box-mihna-user{height: 470px;margin-bottom:40px;}
 
-.box-mihna-user p{height: 75px;}
+.box-mihna-user p{height: 75px;margin-bottom: 5px;}
 
-.box-mihna-user  .btn-primary {background-color:var(--main--color);border-color:var(--main--color);}
+.box-mihna-user  .details-section-btn {
+  background-color:var(--main--color);border-color:var(--main--color);
+  color: var(--White--color);
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 400;
+  margin-top: -16px;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+}
 
-.box-mihna-user  .btn-primary:hover{background-color:var(--second--color);border-color:var(--second--color);}
-
-.box-mihna-user  .btn-primary:focus {background-color:var(--main--color);border-color:var(--main--color);}
+.box-mihna-user  .details-section-btn:hover{background-color:var(--second--color);border-color:var(--second--color);}
 
 .mihna-user .img-mihna-user{height: 260px;object-fit:cover;}
 /*end mihna user*/
@@ -444,3 +459,301 @@ a{color:inherit;text-decoration:none}
   text-align: center;
 }
 /*sections-craft*/
+/*details*/
+
+.profile-page h6 {font-size: 1.75rem !important;color: #959595;font-family: ui-sans-serif;line-height: 1.5em;}
+
+.profile-page .page-header {height: 380px;background-position:center;}
+
+.profile-page .page-header {
+  height: 30vh;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+}
+
+.profile-page .header-filter:after, .header-filter:before {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  content: "";
+}
+
+.profile-page .header-filter::before {background: rgba(0,0,0,.5);}
+
+.profile-page .main {background: #FFF;position: relative;z-index: 3;}
+
+.profile-page .profile {text-align: center;}
+
+.profile-page .container-img-details {width: 200px;height: 200px;margin: auto;}
+
+.profile-page .profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%!important;
+  transform: translate3d(0,-50%,0);
+}
+
+.profile-page .img-raised {box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);}
+
+.profile-page .rounded-circle {border-radius: 50%!important;}
+
+.profile-page .img-fluid, .img-thumbnail {max-width: 100%;height: auto;}
+
+.profile-page .title {
+  margin-top: 30px;
+  font-size: 33px;
+  margin-bottom: 25px;
+  min-height: 32px;
+  color: var(--second--color);
+  font-weight: 700;
+  font-family: auto;
+}
+
+.profile-page .description { margin: 0.071rem auto 0;max-width: 600px;color: #999;font-weight: 300;}
+
+.profile-page p {font-size: 18px;line-height: 35px;margin: 0 0 10px;}
+
+.tab-space {padding: 20px 0 50px;}
+
+.profile-page .gallery {margin-top: 3.213rem;padding-bottom: 50px;}
+
+.profile-page .gallery img {width: 100%;margin-bottom: 2.142rem;}
+
+.profile-page .profile .name{margin-top: -80px;margin-left: 50px;}
+
+.details-containers{text-align:center;width:240px;margin-top: 15px;}
+
+.details-containers .details-header{background-color:var(--main--color);color:var(--White--color);font-weight: bold;}
+
+.details-containers .details-body{height:100px;overflow:hidden;}
+
+.edit-profile-details{text-align: center;margin: 40px;}
+
+.edit-profile-details button{margin-left: 15px;}
+
+/*details*/
+/*contact us*/
+.contact {
+  width: 40%;
+  height: 100%;
+  background: var(--second--color);
+  margin: 5% 33%;
+  padding: 2%;
+  border-radius: 15px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-top: 2em;
+}
+
+.contact h1 {text-align: center;margin-top: 5px;color: #fff;}
+
+.contact h1 i{margin-left: 10px;color: var(--main--color);}
+
+.contact input, .contact textarea {
+  border-radius: 10px;
+  width: 90%;
+  display: block;
+  font-size: 16px;
+  font-weight: 300;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 35px;
+  border: 1px solid #eceff1;
+  padding: 15px;
+  z-index: 1;
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+}
+
+.contact [type=submit] {
+  border: 1px solid  var(--main--color);
+  color: #fff;
+  padding: 10px;
+  border-radius: 30px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  background-color: var(--main--color);
+  margin-top: 35px;
+  font-weight: 500;
+}
+
+.contact [type=submit]:hover {
+  border-color: var(--main--color);
+  color: #fff;
+  cursor: pointer;
+  -o-transition: all 0.2s;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background-color: #425664cf;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 800px) {
+  .contact {
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+/*contact us*/
+/*edit profile*/
+.edit-profile-form{
+  background-color: rgb(74 85 96 / 67%);
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    width: 90%;
+    margin: 20px auto;
+    height: 100%;
+}
+
+.edit-profile-form .profile-edit{background-color: var(--Navy--color);height: 25vh;margin-bottom: 70px;}
+
+.edit-profile-form .text-form{color: #fff;float: right;font-size: 13px;font-weight: 600;}
+
+.edit-profile-form .form-informayion  .form-input{
+    position: relative;
+    border: 1px solid #dae0e58f;
+    border-radius: 25px;
+    background-color: #fff;
+    margin-bottom: 15px;
+    font-size: 14px;    
+}
+
+.edit-profile-form .form-informayion .form-input:focus{ border: 1px solid var(--selver--color);box-shadow:none!important}
+
+
+.edit-profile-form .profile-upload {position: relative;max-width: 205px;margin: 50px auto;}
+
+.edit-profile-form .profile-upload .avatar-edit {position: absolute;right: 12px;z-index: 1;top: 10px;}
+
+.edit-profile-form .profile-upload .avatar-edit input {display: none;}
+
+.edit-profile-form .profile-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+
+.edit-profile-form .profile-upload .avatar-edit input + label:hover {background: #f1f1f1;border-color: #d6d6d6;}
+
+
+.edit-profile-form .profile-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.edit-profile-form .profile-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}	
+/*edit profile*/
+/*footer*/
+.footer {background-color: #ccc;margin-top: 50px!important;padding-bottom: 0px!important;}
+
+.footer h2{margin-right: 50px;font-family: 'Dancing Script', cursive;font-weight: bold;color: var(--main--color);margin-bottom: 25px;}
+
+.footer h4{margin-bottom: 25px;color: var(--main--color);}
+
+.footer p{color: var(--main--color)!important;}
+
+.footer .links ul {list-style-type: none;}
+
+.footer .links li a {color:var(--main--color);transition: color 0.2s;}
+
+.footer .links li a:hover {text-decoration: none;color: var(--White--color);}
+
+.footer .about-company i {font-size: 25px;}
+
+.footer .about-company a {color: white;transition: color 0.2s;}
+
+.footer .location  p{margin-bottom: 10px !important;}
+
+.footer .location i {font-size: 18px;margin-left: 10px;}
+
+.footer .copyright{color: #fff;background-color:var(--main--color);text-align: center;margin-top: 15px;}
+
+.footer .copyright p{margin-bottom: 3px;}
+
+.footer .copyright p small {font-weight: 400;color: #fff !important;}
+
+.footer .social{margin-top: 20px;}
+
+.footer .social li {display: inline-block;margin-right: 10px;}
+
+.footer .social li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #f9e6d4;
+    color: #fba543;
+    font-size: 14px;
+    transition: all all 0.5s ease-out 0s;
+}
+.footer .social li a i{font-size: 14px !important;margin-left: 0!important;}
+
+.footer .social li a:hover,
+.footer.social li a:focus {
+    background-image: -moz-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+    background-image: -webkit-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+    background-image: -ms-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+    color: #fff;
+    box-shadow: 2.5px 4.33px 15px 0px rgba(254, 176, 0, 0.4);
+}
+/*footer*/
+/*rating*/
+
+		/*  
+		 * Rating styles
+		 */
+.rating {width: 226px;margin: 0 auto 1em;font-size: 45px;overflow:hidden;}
+
+.rating a {
+float:right;
+color: #aaa;
+text-decoration: none;
+-webkit-transition: color .4s;
+-moz-transition: color .4s;
+-o-transition: color .4s;
+transition: color .4s;
+}
+.rating a:hover,.rating a:hover ~ a,.rating a:focus,.rating a:focus ~ a		{color: orange;cursor: pointer;}
+
+.rating2 {direction: rtl;display: inline;margin-right: 20px;}
+
+.rating2 a {float:none}
+/*rating*/
