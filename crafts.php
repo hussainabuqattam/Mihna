@@ -36,13 +36,20 @@
                         <img src="img/<?= $craft['image'] ?>" class="card-img-top img-mihna-user">
                         <div class="card-body">
                             <h5 class="card-title"><?= $craft['name'] ?></h5>
-                            <p class="card-text"><?= $craft['notes'] ?></p>
-                            <a href="#" class="btn btn-primary">التفاصيل</a>
+                            <p class="card-text"><?= $craft['notes'] ?></p>	
+                            <a href="#" class="details-section-btn">التفاصيل</a>
+                            <div class="rating rating2"><!--
+                                --><a href="#5" title="Give 5 stars">★</a><!--
+                                --><a href="#4" title="Give 4 stars">★</a><!--
+                                --><a href="#3" title="Give 3 stars">★</a><!--
+                                --><a href="#2" title="Give 2 stars">★</a><!--
+                                --><a href="#1" title="Give 1 star">★</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php  endforeach; else: ?>
-                
+               <span style="width:100%;text-align:center;font-size:20px;font-family: inherit;font-weight: 600;color: #aaa;"><i class="fas fa-exclamation-triangle" style="margin-left: 10px;color: #ff0000b5;"></i>لا يوجد اي حرفة مقدمة</span>
             <?php endif; ?>
         </div>
     </div> 
