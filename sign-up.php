@@ -1,4 +1,5 @@
 <?php
+$login = true;
     $titlePage = "Signup";
     include "include/init.php";
     include "include/header.php";
@@ -11,13 +12,14 @@
 		$password = $_POST['password'];
 		$confirmPassword = $_POST['confirm_password'];
 		$image = "user.png";
+		$type_user = $_POST['type_user'];
 
 
 		$validation = validationUser($_POST);
 
 		if($validation === true){
-			$stmt = $connect->prepare("INSERT INTO users SET password = ?, email = ?, first_name = ?, last_name = ?, image = ?");
-			$result = $stmt ->execute([$password, $email, $first_name, $last_name, $image]);
+			$stmt = $connect->prepare("INSERT INTO users SET password = ?, email = ?, first_name = ?, last_name = ?, type_user = ?, image = ?");
+			$result = $stmt ->execute([$password, $email, $first_name, $last_name, $type_user, $image]);
 	
 			if($result == true) {
 				$_SESSION['message_success'] = "User Add successfully";
@@ -64,9 +66,9 @@
 				</div>
 				<div class="group">
 					<label class="label" for="inputState">حالة المستخدم</label>
-					<select id="inputState" class="input"style="color:#aaa;" name="gender">
-						<option selected>مقدم حرفة </option>
-						<option>مستخدم عادي</option>
+					<select id="inputState" class="input" style="color:#aaa;" name="type_user">
+						<option selected value="craft presenter">مقدم حرفة </option>
+						<option value="user">مستخدم عادي</option>
 					</select>
 				</div>
 				<div class="group">

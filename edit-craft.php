@@ -1,6 +1,6 @@
 <?php 
 
-    $titlePage = "Add Craft";
+    $titlePage = "Edit Craft";
     include "include/init.php";
     include "include/header.php";
 
@@ -10,11 +10,17 @@
         Redirect("index.php");
     }
 
-    $stmt = $connect->prepare("SELECT * FROM crafts WHERE user_id = ?");
-    $stmt->execute([$_SESSION['ID']]);
-    $craft = $stmt->rowCount();
+    if(!isset($_GET['id']) || empty($_GET['id'])) {
+        Redirect("index.php");
+    }
 
-    if($craft > 0) {
+    $id = $_GET['id'];
+
+    $stmt = $connect->prepare("SELECT * FROM crafts WHERE id = ?");
+    $stmt->execute([$id]);
+    $craft = $stmt->fetch();
+
+    if($craft['user_id'] != $_SESSION['ID']) {
         Redirect("index.php");
     }
 
@@ -32,22 +38,24 @@
         $notes = $_POST['notes'];
         $phone_number = $_POST['phone_number'];
         $email = $_POST['email'];
-        $image = $_FILES['image']['name'];
+        $image = empty($_FILES['image']['name']) ? $craft['image'] : $_FILES['image']['name'];
         $IDcategory = $_POST['category']; 
 
-        $validation = validationCraft($_POST, $_FILES);
+        $validation = validationCraft($_POST);
+
+        
 
         if($validation === true) {
             move_uploaded_file($_FILES['image']['tmp_name'], "img/$image");
-            $stmt = $connect->prepare("INSERT INTO crafts SET name = ?, experience = ?, start_work = ?, 
+            $stmt = $connect->prepare("UPDATE crafts SET name = ?, experience = ?, start_work = ?, 
                                             end_work = ?, address = ?, previous_jobs = ?, notes = ?, 
                                             phone_number = ?, email = ?, category_id = ?, user_id = ?, 
-                                            image = ?");
+                                            image = ? WHERE id = ?");
 
-            $result = $stmt->execute([$name, $experience, $start_work, $end_work, $address, $previous_jobs, $notes, $phone_number, $email, $IDcategory, $_SESSION['ID'], $image]);
+            $result = $stmt->execute([$name, $experience, $start_work, $end_work, $address, $previous_jobs, $notes, $phone_number, $email, $IDcategory, $_SESSION['ID'], $image, $id]);
 
             if($result == true) {
-                Redirect("index.php");
+                Redirect("details.php?id=" . $id);
             }
 
         }
@@ -59,13 +67,13 @@
     <div class="testbox">
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="banner">
-              <h1>أضافة حرفة</h1>
+              <h1>تعديل حرفة</h1>
             </div>
             <div class="item">
                 <label for="name">اسم الحرفة المقدمة :</label>
-                <input id="name" type="text" name="name" required />
-                <?php if(isset($error['name'])): ?>
-                    <span class="error-validation"><?= $error['name'] ?></span>
+                <input id="name" type="text" name="name" required value="<?= $craft['name'] ?>" />
+                <?php if(isset($validation['name'])): ?>
+                    <span class="error-validation"><?= $validation['name'] ?></span>
                 <?php endif; ?>
             </div>
             <div class="item">
@@ -73,15 +81,15 @@
                 <select class="custom-select" id="validationTooltip04"  style="width:99%" required name="category">
                     <option selected value="" disabled selected>نوع الحرفة</option>
                     <?php if(!empty($categories)): foreach($categories as $category): ?>
-                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                        <option value="<?= $category['id'] ?>" <?= $category['id'] == $craft['category_id'] ? "selected" : "" ?> ><?= $category['name'] ?></option>
                     <?php endforeach; endif; ?>
                 </select>
             </div>
             <div class="item">
                 <label for="email">الخبرة :</label>
-                <input id="email" type="text" name="experience" required/>
-                <?php if(isset($error['experience'])): ?>
-                    <span class="error-validation"><?= $error['experience'] ?></span>
+                <input id="email" type="text" name="experience" required value="<?= $craft['experience'] ?>"/>
+                <?php if(isset($validation['experience'])): ?>
+                    <span class="error-validation"><?= $validation['experience'] ?></span>
                 <?php endif; ?>
             </div>
             <div class="item">
@@ -92,11 +100,11 @@
                     <select name="start_work">
                         <option selected value="" disabled selected></option>
                         <?php foreach($times as $time): ?>
-                            <option value="<?= $time ?>"><?= $time ?></option>
+                            <option <?= $time == $craft['start_work'] ? "selected" : "" ?> value="<?= $time ?>"><?= $time ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <?php if(isset($error['start_work'])): ?>
-                        <span class="error-validation"><?= $error['start_work'] ?></span>
+                    <?php if(isset($validation['start_work'])): ?>
+                        <span class="error-validation"><?= $validation['start_work'] ?></span>
                     <?php endif; ?>
                 </div>
                 <div class="item">
@@ -104,58 +112,58 @@
                     <select name="end_work">
                         <option selected value="" disabled selected></option>
                         <?php foreach($times as $time): ?>
-                            <option value="<?= $time ?>"><?= $time ?></option>
+                            <option <?= $time == $craft['end_work'] ? "selected" : "" ?> value="<?= $time ?>"><?= $time ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <?php if(isset($error['end_work'])): ?>
-                        <span class="error-validation"><?= $error['end_work'] ?></span>
+                    <?php if(isset($validation['end_work'])): ?>
+                        <span class="error-validation"><?= $validation['end_work'] ?></span>
                     <?php endif; ?>
                 </div>
             </div>
             </div>
             <div class="item">
                 <label for="position">الموقع/العنوان :</label>
-                <input id="position" type="text" name="address" required />
-                <?php if(isset($error['address'])): ?>
-                    <span class="error-validation"><?= $error['address'] ?></span>
+                <input id="position" type="text" name="address" required value="<?= $craft['address'] ?>" />
+                <?php if(isset($validation['address'])): ?>
+                    <span class="error-validation"><?= $validation['address'] ?></span>
                 <?php endif; ?>
             </div>
             <div class="item">
                 <label for="department">اعمال سابقة :</label>
-                <input id="department" type="text" name="previous_jobs" />
+                <input id="department" type="text" name="previous_jobs" value="<?= $craft['previous_jobs'] ?>" />
             </div>
             <div class="item">
                 <label for="department">الملاحظات :</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="notes" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="notes" rows="3"><?= $craft['notes'] ?></textarea>
             </div>
             <div class="item">
                 <label for="phone">رقم الهاتف :</label>
-                <input id="phone" type="text" name="phone_number" required class="inputdirection" />
-                <?php if(isset($error['phone_number'])): ?>
-                    <span class="error-validation"><?= $error['phone_number'] ?></span>
+                <input id="phone" type="text" name="phone_number" required class="inputdirection" value="<?= $craft['phone_number'] ?>"/>
+                <?php if(isset($validation['phone_number'])): ?>
+                    <span class="error-validation"><?= $validation['phone_number'] ?></span>
                 <?php endif; ?>
             </div>
             <div class="item">
                 <label for="email">البريد الالكنروني :</label>
-                <input id="email" type="email" name="email" required  class="inputdirection"/>
-                <?php if(isset($error['email'])): ?>
-                    <span class="error-validation"><?= $error['email'] ?></span>
+                <input id="email" type="email" name="email" required  class="inputdirection" value="<?= $craft['email'] ?>"/>
+                <?php if(isset($validation['email'])): ?>
+                    <span class="error-validation"><?= $validation['email'] ?></span>
                 <?php endif; ?>
             </div>
             <label for="exampleFormControlFile1">صورة الحرفة :</label>
                 <div>
                     <div class="upload-add" id="upload-add-serves">
-                        <img src="https://placehold.co/300x300" alt="img-upload" class="rounded imguploadserves" id="imguploadserves">
+                        <img src="img/<?= $craft['image'] ?>" alt="img-upload" class="rounded imguploadserves" id="imguploadserves">
                     </div>
                     <input name="image" type="file" onchange="readUrl(this)" class="inpfile" id="inpfile" style="display:none;">
                     <label for="inpfile"class="input-files"><i class="fas fa-upload"></i>&nbsp;اضافة صورة</label>
                 </div>
-                <?php if(isset($error['image'])): ?>
-                    <span class="error-validation"><?= $error['image'] ?></span>
+                <?php if(isset($validation['image'])): ?>
+                    <span class="error-validation"><?= $validation['image'] ?></span>
                 <?php endif; ?>
                 <hr>
             <div class="btn-block">
-              <button type="submit" name="Save">اضافة الحرفة</button>
+              <button type="submit" name="Save">تعديل الحرفة</button>
             </div>
         </form>
     </div>

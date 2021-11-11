@@ -1,4 +1,5 @@
 <?php
+	$login = true;
     $titlePage = "Login";
     include "include/init.php";
     include "include/header.php";
@@ -17,6 +18,7 @@
         if ($count > 0) {
             $_SESSION['Email'] = $email;
             $_SESSION['ID'] = $getUser['id'];
+			$_SESSION['type'] = $getUser['type_user'];
             Redirect("index.php");
             exit();
         }else {
