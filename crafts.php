@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= $craft['name'] ?></h5>
                             <p class="card-text"><?= $craft['notes'] ?></p>	
-                            <a href="#" class="details-section-btn">التفاصيل</a>
+                            <a href="details.php?id=<?= $craft['id'] ?>" class="details-section-btn">التفاصيل</a>
                             <div class="rating rating2"><!--
                                 --><a href="#5" title="Give 5 stars">★</a><!--
                                 --><a href="#4" title="Give 4 stars">★</a><!--

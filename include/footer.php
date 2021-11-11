@@ -1,10 +1,6 @@
 
 
-
-
-
-
-<div class="mt-5 pt-5 pb-5 footer">
+<div class="mt-5 pt-5 pb-5 footer" <?= isset($login) && $login == true ? "style='display:none'" : "" ?>>
   <div class="row">
     <div class="col-lg-5 col-xs-12 about-company">
       <h2>MIHNA</h2>

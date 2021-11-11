@@ -45,7 +45,7 @@ function validationCraft($post, $files = []) {
         $error['email'] = "البريد الإلكتروني غير صحيح ، يجب أن يكون مثل هذا النمط (example@example.com)";
     }
 
-    if(empty($files['image']['name'])){
+    if(!empty($files) && empty($files['image']['name'])){
         $error['image'] = "من فضلك ، اختر الصورة";
     }
 
@@ -84,6 +84,36 @@ function validationUser($post) {
     }else if($post['confirm_password'] !== $post['password']){
         $error['Password'] = "كلمة المرور وتأكيد كلمة المرور غير متطابقتين";
     }
+
+    if(empty($error)){
+        return true;
+    }else{
+        return $error;
+    }
+}
+
+
+function validationConnect($post) {
+    $error = [];
+
+    if(empty($post['name'])){
+        $error['name'] = "لا يجوز أن يكون الاسم فارغًا";
+    }else if(strlen($post['name']) < 3){
+        $error['name'] = "يجب أن يحتوي الاسم على 3 أحرف على الأقل";
+    }
+
+    if(empty($post['email'])) {
+        $error['email'] = "لا يجوز أن يكون البريد الإلكتروني فارغًا";
+    }else if(!preg_match("/^([\w0-9_\-\.]+)@([\w\-]+\.)+[\w]{2,6}$/", $post['email'])) {
+        $error['email'] = "البريد الإلكتروني غير صحيح ، يجب أن يكون مثل هذا النمط (example@example.com)";
+    }
+
+    if(empty($post['body'])){
+        $error['body'] = "لا يجوز أن يكون الرسالة فارغًا";
+    }elseif(strlen($post['body']) < 10){
+        $error['body'] = "يجب أن يحتوي الرسالة على 10 أحرف على الأقل";
+    }
+
 
     if(empty($error)){
         return true;

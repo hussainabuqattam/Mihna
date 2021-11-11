@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2021 at 10:20 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Nov 11, 2021 at 05:26 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,19 @@ INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `crafts`
 --
 
@@ -72,7 +85,7 @@ CREATE TABLE `crafts` (
 --
 
 INSERT INTO `crafts` (`id`, `name`, `experience`, `start_work`, `end_work`, `address`, `previous_jobs`, `notes`, `phone_number`, `email`, `category_id`, `user_id`, `image`) VALUES
-(1, 'خالد للسباكة', '12 سنة', '8 AM', '8 PM', 'Amman, Jordan', '', 'جميع اعمال السباكة والتمديدات خبرة لأكثر من 12 سنة في المجال لدي العديد من المشاريع يمكنك رؤيتها', '0778122927', 'admin@admin.com', 5, 1, 'pexels-pavel-danilyuk-7937299.jpg');
+(3, 'خالد للسباكة', '25 سنة', '8 AM', '8 PM', 'Amman, Jordan', '', 'جميع اعمال السباكة والتمديدات خبرة لأكثر من 12 سنة في المجال لدي العديد من المشاريع يمكنك رؤيتها', '0771234567', 'loai.mustafa@gmail.com', 5, 1, 'pexels-pavel-danilyuk-7937299.jpg');
 
 -- --------------------------------------------------------
 
@@ -86,6 +99,7 @@ CREATE TABLE `users` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `type_user` varchar(255) NOT NULL DEFAULT 'craft presenter',
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,8 +107,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `image`) VALUES
-(1, 'Loai', 'Mustafa', 'Loai@gmail.com', 'Loai.st12', 'user.png');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `type_user`, `image`) VALUES
+(1, 'Loai', 'Mustafa', 'Loai@gmail.com', 'Loai.st123', 'craft presenter', 'user.png'),
+(2, 'لؤي', 'مصطفى', 'Mustafa@gmail.com', 'Loai.st12', 'user', 'user.png');
 
 --
 -- Indexes for dumped tables
@@ -104,6 +119,12 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `imag
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -132,16 +153,22 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `crafts`
 --
 ALTER TABLE `crafts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
