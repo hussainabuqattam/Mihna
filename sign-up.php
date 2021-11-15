@@ -39,7 +39,7 @@ $login = true;
         <hr class="hr">
         <div class="container-signbtn">
          <a href="Login.php" class="sign-btns">تسجيل الدخول</a>
-         <a href="sign-up.php" class="sign-btns">حساب جديد</a>
+         <a href="sign-up.php" class="sign-btns"style="color:#fff;">حساب جديد</a>
         </div>
 		<div class="login-form">
 			<form class="sign-up-htm" method="POST">

@@ -37,11 +37,11 @@
                 </li>
                 <?php if(isset($_SESSION['ID'])): ?>
                     <li class="nav-item">
-                        <a href="logout.php" type="button" class="btn btn-outline-light sign-btns"><i class="fas fa-sign-out-alt"></i>تسجيل الخروج</a>
+                        <a href="logout.php" type="button" class="btn btn-outline-light sign-btns"style="color:#c6ad8f!important;"><i class="fas fa-sign-out-alt"></i>تسجيل الخروج</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a href="Login.php" type="button" class="btn btn-outline-light sign-btns" style="padding: 0.375rem 0.72rem"><i class="fas fa-sign-out-alt"></i>تسجيل الدخول</a>
+                        <a href="Login.php" type="button" class="btn btn-outline-light sign-btns" style="padding: 0.375rem 0.72rem;color:#c6ad8f!important;"><i class="fas fa-sign-out-alt"></i>تسجيل الدخول</a>
                     </li>
                 <?php endif; ?>
             </ul>
