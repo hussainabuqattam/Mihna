@@ -36,8 +36,8 @@
         <a class="navbar-brand logo logo-login" href="index.php"><span>M</span>IHNA</a>
         <hr class="hr">
 		<div class="container-signbtn">
-         <a href="Login.php" class="sign-btns">تسجيل الدخول</a>
-         <a href="sign-up.php" class="sign-btns">حساب جديد</a>
+         <a href="Login.php" class="sign-btns"style="color:#fff;">تسجيل الدخول</a>
+         <a href="sign-up.php" class="sign-btns" >حساب جديد</a>
         </div>
 		<?php if(isset($_SESSION['message'])): ?>
 			<div class="alert alert-danger" role="alert">
