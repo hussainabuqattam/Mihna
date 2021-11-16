@@ -6,7 +6,7 @@
 
     include "include/nav.php";
 
-    if(!isset($_SESSION['ID']) || $_SESSION['type'] != "craft presenter") {
+    if(!isset($_SESSION['ID']) || $_SESSION['type'] != "مقدم حرفة") {
         Redirect("index.php");
     }
 
