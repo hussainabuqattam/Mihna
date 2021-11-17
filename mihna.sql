@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2021 at 05:26 PM
+-- Generation Time: Nov 17, 2021 at 07:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `mihna`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `type_user` varchar(255) NOT NULL DEFAULT 'craft presenter',
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`, `type_user`, `image`) VALUES
+(1, 'admin', 'admin', 'Admin@gmail.com', 'admin', 'craft presenter', 'user.png');
 
 -- --------------------------------------------------------
 
@@ -43,7 +66,7 @@ INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 (3, 'مبرمج', 'pexels-luis-gomes-546819.jpg'),
 (4, 'عامل منازل', 'pexels-andrea-piacquadio-3769740.jpg'),
 (5, 'حرفة السباكة', 'pexels-pavel-danilyuk-7937299.jpg'),
-(6, 'حرف منزلية', 'pexels-flora-westbrook-4191618.jpg');
+(8, 'حرفة منزلية', 'pexels-flora-westbrook-4191618.jpg');
 
 -- --------------------------------------------------------
 
@@ -108,12 +131,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `type_user`, `image`) VALUES
-(1, 'Loai', 'Mustafa', 'Loai@gmail.com', 'Loai.st123', 'craft presenter', 'user.png'),
-(2, 'لؤي', 'مصطفى', 'Mustafa@gmail.com', 'Loai.st12', 'user', 'user.png');
+(1, 'user', 'user', 'user@gmail.com', 'user', 'مقدم حرفة', 'user.png'),
+(2, 'لؤي', 'مصطفى', 'Mustafa@gmail.com', 'Loai.st12', 'مواطن', 'user.png');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `categories`
@@ -147,16 +177,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `crafts`
@@ -168,7 +204,7 @@ ALTER TABLE `crafts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

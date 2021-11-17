@@ -79,7 +79,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div id="piechart" style="margin:auto; width: 900px; height: 500px;"></div>
+                <div id="piechart" style="margin:auto; width: 900px; height: 400px;"></div>
             </div>
         </div>
     </div>
