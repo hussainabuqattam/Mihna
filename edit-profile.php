@@ -82,6 +82,10 @@
                 <input type='file' name="image" id="imageUpload" accept=".png, .jpg, .jpeg" />
                 <label for="imageUpload"><i class="fas fa-pen" style="margin-top:7px"></i></label>
             </div>
+            <div class="avatar-edit"style="top:20px;right:-96px;">
+                <input  name="image-trach" id="imagetrach">
+                <label for="image-trach"><i class="far fa-trash-alt" style="margin-top:7px;color: red;"></i></label>
+            </div>
             <div class="avatar-preview">
                 <div id="imagePreview" style="background-image: url(img/<?= $user['image'] ?>);">
                 </div>
