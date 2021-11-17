@@ -51,11 +51,30 @@
 			</div>
 		</div>
 		<div class="row gutters">
+			<!--upload--file-->
+		   <div>
+			  <div class="col-md-8">
+				<div class="upload-add" id="upload-add-serves">
+					<img src="https://placehold.co/300x300" alt="img-upload" class="rounded imguploadserves" id="imguploadserves">
+				</div>
+				<input name="image" type="file" onchange="readUrl(this)" class="inpfile" id="inpfile" style="display:none;">
+				<label for="inpfile"class="input-files"><i class="fas fa-upload"></i>&nbsp;اضافة صورة</label>
+		       </div>
+			</div>
+			<!--upload--file-->
+			<!--img--form-->
+			<div class="col-md-4">
+               <div class="form-img-container">
+				   <img src="../img/pexels-flora-westbrook-4191618.jpg" alt="">
+			   </div>
+		    </div>
+			<!--img--form-->
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-center">
-					<button type="button" id="submit" name="submit" class="btn btn-success">اضافة</button>
+					<button type="button" id="submit" name="submit" class="btn btn-success"style="width:190px;border-radius:15px;font-weight:500;">إضافة</button>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
