@@ -529,4 +529,8 @@ white-space: nowrap;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }	
+  }
+
+  svg{
+      height: 400px !important;
+  }
