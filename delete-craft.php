@@ -5,7 +5,7 @@ include "include/init.php";
 if(!isset($_SESSION['ID']))
 Redirect("index.php");
 
-if(!isset($_GET['id']) && empty($_GET['id'])){
+if(!isset($_GET['id']) || empty($_GET['id'])){
     Redirect("index.php");
 }
 

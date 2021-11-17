@@ -27,11 +27,11 @@
                                 </div>
                                 <div class="name">
                                     <div class="rating rating2"><!--
-                                        --><a href="#5" title="Give 5 stars">★</a><!--
-                                        --><a href="#4" title="Give 4 stars">★</a><!--
-                                        --><a href="#3" title="Give 3 stars">★</a><!--
-                                        --><a href="#2" title="Give 2 stars">★</a><!--
-                                        --><a href="#1" title="Give 1 star">★</a>
+                                        --><a id="5" class="ratingJS" href="#" title="Give 5 stars">★</a><!--
+                                        --><a id="4" class="ratingJS" href="#" title="Give 4 stars">★</a><!--
+                                        --><a id="3" class="ratingJS" href="#" title="Give 3 stars">★</a><!--
+                                        --><a id="2" class="ratingJS" href="#" title="Give 2 stars">★</a><!--
+                                        --><a id="1" class="ratingJS" href="#" title="Give 1 star">★</a>
                                     </div>
                                     <h3 class="title"><?= $crafts['name'] ?></h3>
                                 </div>

@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <?php if(isset($_SESSION['ID']) && $_SESSION['type'] == "craft presenter"):
+                <?php if(isset($_SESSION['ID']) && $_SESSION['type'] == "مقدم حرفة"):
                     $stmt = $connect->prepare("SELECT * FROM crafts WHERE user_id = ?");
                     $stmt->execute([$_SESSION['ID']]);
                     $craft = $stmt->rowCount();
