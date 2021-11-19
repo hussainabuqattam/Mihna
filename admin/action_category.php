@@ -49,7 +49,7 @@ $action = (isset($_GET['action']) && !empty($_GET['action'])) ? $_GET['action'] 
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-center">
-                                        <button type="submit" id="submit" name="Save" class="btn btn-success">اضافة</button>
+                                        <button type="submit" id="submit" name="Save" class="btn btn-success app_btn_form">اضافة</button>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ $action = (isset($_GET['action']) && !empty($_GET['action'])) ? $_GET['action'] 
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-center">
-                                        <button type="submit" id="submit" name="Save" class="btn btn-success">حفظ</button>
+                                        <button type="submit" id="submit" name="Save" class="btn btn-success app_btn_form">حفظ</button>
                                     </div>
                                 </div>
                             </div>

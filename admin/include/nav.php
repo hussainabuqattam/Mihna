@@ -56,9 +56,9 @@
       <span class="toolt">الصفحة الشخصية</span>
      </li>
      <li>
-         <a class="<?= $titlePage == "مشرف النظام" ? "actives" : "" ?>" href="admin.php">
+         <a class="<?= $titlePage == "مشرفي النظام" ? "actives" : "" ?>" href="admin.php">
          <i class="fas fa-users"></i>
-             <span class="links_name">مشرف النظام</span>
+             <span class="links_name">مشرفي النظام</span>
             </a>
       <span class="toolt">مشرف النظام</span>
      </li>

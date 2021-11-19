@@ -90,13 +90,13 @@ body{direction: rtl;text-align: right;overflow-x: hidden;}
 
 .box-mihna-user p{height: 75px;margin-bottom: 5px;}
 
-.box-mihna-user  .details-section-btn {
+.box-mihna-user .details-section-btn {
   background-color:var(--main--color);border-color:var(--main--color);
   color: var(--White--color);
   text-decoration: none;
   display: inline-block;
   font-weight: 400;
-  margin-top: -16px;
+  margin-top: 20px;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -532,9 +532,9 @@ a{color:inherit;text-decoration:none}
 
 .profile-page .gallery img {width: 100%;margin-bottom: 2.142rem;}
 
-.profile-page .profile .name{margin-top: -80px;margin-left: 50px;}
+.profile-page .profile .name{margin-top: -80px;}
 
-.details-containers{text-align:center;width:240px;margin-top: 15px;}
+.details-containers{text-align:center;margin-top: 15px;}
 
 .details-containers .details-header{background-color:var(--main--color);color:var(--White--color);font-weight: bold;}
 
@@ -745,7 +745,7 @@ a{color:inherit;text-decoration:none}
 		/*  
 		 * Rating styles
 		 */
-.rating {width: 226px;margin: 0 auto 1em;font-size: 45px;overflow:hidden;}
+.rating {width: 226px;font-size: 45px;overflow:hidden;direction: rtl;display: inline;}
 
 .rating a {
 float:right;
@@ -755,10 +755,18 @@ text-decoration: none;
 -moz-transition: color .4s;
 -o-transition: color .4s;
 transition: color .4s;
+float:none
 }
-.rating a:hover,.rating a:hover ~ a,.rating a:focus,.rating a:focus ~ a		{color: orange;cursor: pointer;}
 
-.rating2 {direction: rtl;display: inline;margin-right: 20px;}
+.rating a.select,.rating a.select ~ a		{color: orange;cursor: pointer;}
+.rating2 a:hover,.rating2 a:hover ~ a,.rating2 a:focus,.rating2 a:focus ~ a		{color: orange;cursor: pointer;}
 
-.rating2 a {float:none}
+.numberRating {
+  margin-top: -11px;
+}
+
+.rating-show {
+  padding-right: 36px;
+}
+
 /*rating*/

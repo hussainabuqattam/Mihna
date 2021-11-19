@@ -12,5 +12,20 @@ function readUrl(input){
 }
 
 $(".ratingJS").on("click", function() {
-    console.log($(this).attr("id"))
+    var craftId = $(this).parent().attr("id"),
+    numberStar = $(this).attr("id");
+    var thisButton = $(this);
+
+    $.ajax({
+        method:"post",
+        url:"ajax.php",
+        data:{craft_Id: craftId, number_Star:numberStar},
+        success:function(result) {
+            var siblings = thisButton.siblings("a.select");
+            siblings.removeClass("select");
+            thisButton.addClass("select");
+            $(".rating-text").text("Thanks you For Rating! 😇")
+        }
+    });
+    
 });

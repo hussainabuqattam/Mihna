@@ -73,8 +73,8 @@ $action = (isset($_GET['action']) && !empty($_GET['action'])) ? $_GET['action'] 
                                         <label for="Type">نوع المستخدم</label>
                                         <select name="type_user" id="Type" class="form-control">
                                             <option value="" disabled selected></option>
-                                            <option value="craft presenter">مقدم خدمة</option>
-                                            <option value="user">مواطن</option>
+                                            <option value="مقدم خدمة">مقدم خدمة</option>
+                                            <option value="مواطن">مواطن</option>
                                         </select>
                                         <?php if(isset($validation['TypeUser'])): ?>
                                             <p class="error-message"><?= $validation['TypeUser'] ?></p>
@@ -100,7 +100,7 @@ $action = (isset($_GET['action']) && !empty($_GET['action'])) ? $_GET['action'] 
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-center">
-                                        <button type="submit" id="submit" name="Save" class="btn btn-success">اضافة</button>
+                                        <button type="submit" id="submit" name="Save" class="btn btn-success app_btn_form">اضافة</button>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +215,7 @@ $action = (isset($_GET['action']) && !empty($_GET['action'])) ? $_GET['action'] 
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-center">
-                                        <button type="submit" id="submit" name="Save" class="btn btn-success">حفظ</button>
+                                        <button type="submit" id="submit" name="Save" class="btn btn-success app_btn_form">حفظ</button>
                                     </div>
                                 </div>
                             </div>

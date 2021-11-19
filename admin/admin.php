@@ -1,5 +1,5 @@
 <?php
-    $titlePage = "مشرف النظام";
+    $titlePage = "مشرفي النظام";
     include "include/init.php";
     include "include/header.php";
     include "include/nav.php";
@@ -31,7 +31,6 @@
                         <th scope="col">الاسم الاول</th>
                         <th scope="col">الاسم الاخير</th>
                         <th scope="col">البريد الالكتروني</th>
-                        <th scope="col">نوع المستخدم</th>
                         <th scope="col">التحكم</th>
                     </tr>
                 </thead>
@@ -43,7 +42,6 @@
                                     <td><?= $admin['first_name'] ?></td>
                                     <td><?= $admin['last_name'] ?></td>
                                     <td><?= $admin['email'] ?></td>
-                                    <td><?= $admin['type_user'] ?></td>
                                     <td>
                                         <a class="btn btn-sm btn-danger" href="action_admin.php?action=delete&id=<?= $admin['id'] ?>"><i class="far fa-trash-alt"></i></a>
                                     </td>

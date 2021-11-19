@@ -29,6 +29,12 @@ body{direction: rtl;text-align: right;overflow-x: hidden;}
     color: var(--second--color);
 }
 
+.app_btn_form {
+    width:190px;
+    border-radius:15px;
+    font-weight:500;
+}
+
 .app-btn:hover {
     color: #fff;
 }

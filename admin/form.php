@@ -50,35 +50,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="row gutters">
-					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-						<div class="text-center">
-							<button type="button" id="submit" name="submit" class="btn btn-success">اضافة</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="website">موقع الويب</label>
-					<input type="url" class="form-control" id="website" placeholder="موقع الويب">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="Street">الشارع</label>
-					<input type="name" class="form-control" id="Street" placeholder="الشارع">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="ciTy">المدينة</label>
-					<input type="name" class="form-control" id="ciTy" placeholder="المدينة">
-				</div>
-			</div>
-		</div>
 		<div class="row gutters">
 			<!--upload--file-->
 		   <div>
@@ -100,7 +71,7 @@
 			<!--img--form-->
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-center">
-					<button type="button" id="submit" name="submit" class="btn btn-success"style="width:190px;border-radius:15px;font-weight:500;">إضافة</button>
+					<button type="button" id="submit" name="submit" class="btn btn-success" style="width:190px;border-radius:15px;font-weight:500;">إضافة</button>
 				</div>
 			</div>
 			

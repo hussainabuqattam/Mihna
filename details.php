@@ -13,6 +13,11 @@
     $stmt->execute([$id]);
     $crafts = $stmt->fetch();
 
+    if(isset($_SESSION['ID'])){
+        $stmt2 = $connect->prepare("SELECT * FROM rating WHERE craft_id = ? AND user_id = ?");
+        $stmt2->execute([$id, $_SESSION['ID']]);
+        $rating = $stmt2->fetch();
+    }
  ?>
     <div class="profile-page">
         <div class="page-header header-filter" style="background-color:#cccccc87;"></div>
@@ -25,16 +30,19 @@
                                 <div class="container-img-details">
                                     <img src="img/<?= $crafts['image'] ?>" alt="Circle Image" class="img-raised">
                                 </div>
+                                <?php if(isset($_SESSION['ID']) && $_SESSION['type'] == "مواطن"): ?>
                                 <div class="name">
-                                    <div class="rating rating2"><!--
-                                        --><a id="5" class="ratingJS" href="#" title="Give 5 stars">★</a><!--
-                                        --><a id="4" class="ratingJS" href="#" title="Give 4 stars">★</a><!--
-                                        --><a id="3" class="ratingJS" href="#" title="Give 3 stars">★</a><!--
-                                        --><a id="2" class="ratingJS" href="#" title="Give 2 stars">★</a><!--
-                                        --><a id="1" class="ratingJS" href="#" title="Give 1 star">★</a>
+                                    <div id="<?= $id ?>" class="rating rating2"><!--
+                                        --><a id="5" class="ratingJS <?= $rating['number_ratings'] == 5 ? "select" : "" ?>"  title="Give 5 stars">★</a><!--
+                                        --><a id="4" class="ratingJS <?= $rating['number_ratings'] == 4 ? "select" : "" ?>" ij title="Give 4 stars">★</a><!--
+                                        --><a id="3" class="ratingJS <?= $rating['number_ratings'] == 3 ? "select" : "" ?>" ij title="Give 3 stars">★</a><!--
+                                        --><a id="2" class="ratingJS <?= $rating['number_ratings'] == 2 ? "select" : "" ?>" ij title="Give 2 stars">★</a><!--
+                                        --><a id="1" class="ratingJS <?= $rating['number_ratings'] == 1 ? "select" : "" ?>" ij title="Give 1 stars">★</a>
+                                            <p dir="ltr" class="rating-text"></p>
                                     </div>
                                     <h3 class="title"><?= $crafts['name'] ?></h3>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
