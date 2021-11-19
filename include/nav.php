@@ -1,6 +1,6 @@
 <nav class="navbar navbar-edit navbar-expand-lg navbar-light <?= !isset($_SESSION['ID']) ? "Login" : "" ?> <?= $titlePage == "Home Page" ? "Home" : "" ?>">
     <div class="container">
-        <a class="navbar-brand logo" href="/"><span>M</span>IHNA</a>
+        <a class="navbar-brand logo" href="/Mihna"><span>M</span>IHNA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>

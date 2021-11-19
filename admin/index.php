@@ -92,17 +92,49 @@ google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
+            <?php $stmt = $connect->prepare("SELECT * FROM crafts");
+                $stmt->execute();
+                $crafts = $stmt->fetchAll();
+                $Stars5 = 0;
+                $Stars4 = 0;
+                $Stars3 = 0;
+                $Stars2 = 0;
+                $Stars1 = 0;
+                foreach($crafts as $craft) {
+                    $sumRating = 0; $avarge = 0;
+                    $stmt2 = $connect->prepare("SELECT * FROM rating WHERE craft_id = ?");
+                    $stmt2->execute([$craft['id']]);
+                    $ratings = $stmt2->fetchAll();
+                    foreach($ratings as $rating){
+                        $sumRating += $rating['number_ratings'];
+                    }
+                    $numberpeople = count($ratings);
+                    $avarge = $numberpeople != 0 ?  floor($sumRating / count($ratings)) : $sumRating;
+                    if($avarge  == 5) {
+                        $Stars5++;
+                    }elseif($avarge == 4){
+                        $Stars4++;
+                    }elseif($avarge == 3){
+                        $Stars3++;
+                    }elseif($avarge == 2){
+                        $Stars2++;
+                    }elseif($avarge == 1){
+                        $Stars1++;
+                    }
+                }
+            ?>
           ['Language', 'Speakers (in millions)'],
-          ['German',  5.85],
-          ['French',  1.66],
-          ['Italian', 0.316],
-          ['Romansh', 0.0791]
+          ['5 Stars', <?=$Stars5?>],
+          ['4 Stars', <?=$Stars4?>],
+          ['3 Satrs', <?=$Stars3?>],
+          ['2 Stars', <?=$Stars2?>],
+          ['1 Stars', <?=$Stars1?>]
         ]);
 
       var options = {
         legend: 'none',
         pieSliceText: 'label',
-        title: 'Swiss Language Use (100 degree rotation)',
+        title: 'عدد تقيم الحرف',
         pieStartAngle: 100,
       };
 
